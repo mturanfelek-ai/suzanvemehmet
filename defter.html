@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilek Defteri | Mehmet & Suzan</title>
+    <meta name="description" content="Bu özel günümüzde bizim için birkaç satır bırakmanız, yıllar sonra bile gülümseyerek hatırlayacağımız en güzel hediyelerden biri olacak :)" />
+    <meta property="og:title" content="Mehmet & Suzan'ın Dilek Defteri" />
+    <meta property="og:description" content="Bu özel günümüzde bizim için birkaç satır bırakmanız, yıllar sonra bile gülümseyerek hatırlayacağımız en güzel hediyelerden biri olacak :)" />
+    <meta property="og:image" content="https://www.mehmetvesuzan.com.tr/images/ms-defter.png" />
+    <meta property="og:url" content="https://www.mehmetvesuzan.com.tr/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Kalp Loader Mask Stili */
+        #loader-mask {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #0a0b0d; display: flex; justify-content: center; align-items: center;
+            z-index: 9999; transition: opacity 0.8s ease;
+        }
+        .heart-loader {
+            color: #d4af37; font-size: 60px;
+            animation: pulse 0.8s infinite ease-in-out; /* Kalp daha hızlı atıyor */
+        }
+        @keyframes pulse { 
+            0% { transform: scale(0.9); } 
+            50% { transform: scale(1.2); } 
+            100% { transform: scale(0.9); } 
+        }
+
+        body { background: radial-gradient(circle at center, #1a1d24 0%, #0a0b0d 100%); font-family: 'Montserrat', sans-serif; color: #d4af37; padding: 5px; min-height: 100vh; display: flex; justify-content: center; }
+        
+        .container { 
+            width: 100%; max-width: 440px; background: #0d121d; padding: 10px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5); box-sizing: border-box;
+            opacity: 0; animation: fadeIn 1s ease-in-out forwards; animation-delay: 0.5s;
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        h1 { font-family: 'Cinzel', serif; color: #d4af37; text-align: center; margin-bottom: 25px; letter-spacing: 2px; }
+        .header-image { width: 100%; height: auto; border-radius: 4px; margin-bottom: 20px; display: block; border: 1px solid rgba(212, 175, 55, 0.3); }
+
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; background: rgba(255,255,255,0.05); border: 1px solid #d4af37; border-radius: 4px; color: white; box-sizing: border-box; }
+        textarea { min-height: 180px; resize: vertical; } 
+        
+        input[name="data[IsimSoyisim]"] { text-transform: uppercase; }
+        button { background: #d4af37; color: #000; border: none; padding: 12px; width: 100%; border-radius: 4px; cursor: pointer; font-family: 'Cinzel', serif; font-weight: 700; transition: 0.3s; }
+        button:hover { background: #b89222; }
+        
+        #mesajlar { margin-top: 30px; }
+        .mesaj-kart { padding: 15px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); margin-bottom: 10px; }
+        .mesaj-kart strong { color: #d4af37; font-family: 'Cinzel', serif; text-transform: uppercase; }
+        .mesaj-kart p { color: #ccc; font-size: 13px; margin-top: 5px; word-wrap: break-word; }
+        
+        .pagination { text-align: center; margin-top: 20px; display: flex; justify-content: center; gap: 5px; flex-wrap: wrap; }
+        .pagination button { width: auto; padding: 5px 12px; background: rgba(212, 175, 55, 0.1); border: 1px solid #d4af37; color: #d4af37; cursor: pointer; }
+        .pagination button:hover { background: #d4af37; color: #000; }
+        .pagination button.active { background: #d4af37; color: #000; }
+        
+        .geri-don { text-align: center; margin-top: 25px; display: block; color: #d4af37; text-decoration: none; font-size: 12px; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+    <div id="loader-mask"><div class="heart-loader">❤</div></div>
+
+    <div class="container">
+        <h1>Dilek Defteri</h1>
+<p style="text-align: center; font-size: 12px; margin-bottom: 20px; color: white;">
+    Bu özel günümüzde bizim için birkaç satır bırakmanız, yıllar sonra bile gülümseyerek hatırlayacağımız en güzel hediyelerden biri olacak. :)
+</p>
+
+        <img src="images/ms-defter.png" alt="Mehmet & Suzan" class="header-image">
+
+        <form id="ziyaretciFormu">
+            <div style="display:none;"><input type="text" name="bot_check"></div>
+            <input type="text" name="data[IsimSoyisim]" placeholder="ADINIZ SOYADINIZ" required>
+            <textarea name="data[Mesaj]" placeholder="Güzel dilekleriniz..." rows="8" required></textarea>
+            <button type="submit">Deftere Ekle</button>
+        </form>
+
+        <div id="mesajlar"></div>
+        <div id="sayfalama" class="pagination"></div>
+        <a href="index.html" class="geri-don">← DAVETİYE SAYFASINA GERİ DÖN</a>
+    </div>
+
+<script>
+    // Sayfa tamamen yüklendikten sonra maskeyi 2.5 saniye tut
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const loader = document.getElementById('loader-mask');
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 800);
+        }, 2500); // Buradaki 2500 değeri milisaniye cinsindendir (2.5 saniye)
+    });
+
+    const apiURL = 'https://sheetdb.io/api/v1/ba3nmi3neh4rr';
+    let suankiSayfa = 1;
+    const yorumBasina = 10;
+    let tumMesajlar = [];
+
+    function renderMesajlar() {
+        const kutu = document.getElementById('mesajlar');
+        const baslangic = (suankiSayfa - 1) * yorumBasina;
+        const sayfaMesajlari = tumMesajlar.slice(baslangic, baslangic + yorumBasina);
+
+        kutu.innerHTML = '';
+        sayfaMesajlari.forEach(item => {
+            kutu.innerHTML += `<div class="mesaj-kart"><strong>${item.IsimSoyisim}</strong><p>${item.Mesaj}</p></div>`;
+        });
+        renderSayfalama();
+    }
+
+    function renderSayfalama() {
+        const sayfalama = document.getElementById('sayfalama');
+        const toplamSayfa = Math.ceil(tumMesajlar.length / yorumBasina);
+        sayfalama.innerHTML = '';
+        for(let i=1; i<=toplamSayfa; i++) {
+            const btn = document.createElement('button');
+            btn.innerText = i;
+            if(i === suankiSayfa) btn.classList.add('active');
+            btn.onclick = () => { suankiSayfa = i; renderMesajlar(); window.scrollTo(0,0); };
+            sayfalama.appendChild(btn);
+        }
+    }
+
+    document.getElementById('ziyaretciFormu').addEventListener('submit', e => {
+        e.preventDefault();
+        if (e.target.bot_check.value !== "") return;
+        const isimInput = e.target.querySelector('input[name="data[IsimSoyisim]"]');
+        isimInput.value = isimInput.value.toUpperCase();
+        
+        const btn = e.target.querySelector('button');
+        btn.innerText = "Gönderiliyor...";
+        btn.disabled = true;
+
+        fetch(apiURL, { method: 'POST', body: new FormData(e.target) })
+        .then(() => location.reload());
+    });
+
+    fetch(apiURL)
+        .then(res => res.json())
+        .then(data => {
+            tumMesajlar = data.reverse();
+            renderMesajlar();
+        });
+</script>
+</body>
+</html>

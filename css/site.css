@@ -1,5 +1,5 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { width: 100vw; height: 100vh; height: -webkit-fill-available; display: flex; justify-content: center; align-items: center; background: radial-gradient(circle at center, #1a1d24 0%, #0a0b0d 100%); font-family: 'Montserrat', sans-serif; overflow: hidden; padding: 15px; }
+        body { width: 100vw; height: 100vh; height: -webkit-fill-available; display: flex; justify-content: center; align-items: center; background-color: #0d121d; font-family: 'Montserrat', sans-serif; overflow: hidden; padding: 15px; }
 
         .stage { width: 100%; max-width: 440px; height: auto; display: flex; flex-direction: column; align-items: center; position: relative; perspective: 2000px; margin-top: 40px; cursor: pointer; }
         /* pointer-events: none; kaldırıldı, artık yazıya tıklayınca da çalışır */

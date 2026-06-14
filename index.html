@@ -96,6 +96,44 @@
 <a href="defter.html" class="action-btn" style="flex: 1 1 100%;" onclick="event.stopPropagation();">DİLEK DEFTERİNE YAZI YAZ</a>
 </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const audio = document.getElementById("myAudio");
+        const btn = document.getElementById("playPauseBtn");
+        const icon = document.getElementById("btnIcon");
+
+        // Sayfa yüklendiğinde otomatik çalmayı dener
+        // (Çoğu tarayıcı bunu bloklayacaktır)
+        audio.play().catch(function(error) {
+            console.log("Tarayıcı otomatik oynatmayı engelledi, etkileşim bekleniyor.");
+        });
+
+        // Buton tıklandığında müzik kontrolü
+        if (btn) {
+            btn.addEventListener("click", function() {
+                if (audio.paused) {
+                    audio.play();
+                    icon.textContent = "⏸";
+                } else {
+                    audio.pause();
+                    icon.textContent = "▶";
+                }
+            });
+        }
+
+        // ALTERNATİF: Kullanıcı sayfanın herhangi bir yerine tıkladığında 
+        // müziğin başlamasını garantilemek için:
+        document.body.addEventListener("click", function startAudio() {
+            if (audio.paused) {
+                audio.play();
+                icon.textContent = "⏸";
+                // Bir kez başladıktan sonra bu dinleyiciyi kaldır
+                document.body.removeEventListener("click", startAudio);
+            }
+        }, { once: true });
+    });
+</script>
 <script>
 const targetKina = new Date("July 3, 2026 19:00:00").getTime();
 const targetDugun = new Date("July 10, 2026 19:00:00").getTime();
@@ -175,6 +213,13 @@ window.addEventListener('load', () => {
     }, 2500);
 });
 </script>
-
+<div class="music-player">
+    <audio id="myAudio" loop>
+        <source src="assets/ms.mp3" type="audio/mpeg">
+    </audio>
+    <button id="playPauseBtn" class="music-btn">
+        <span id="btnIcon">▶</span>
+    </button>
+</div>
 </body>
 </html>
